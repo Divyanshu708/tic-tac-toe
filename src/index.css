@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ticTab {
+  height: 51rem;
+}
+
+* {
+  max-height: 100vh;
+}
