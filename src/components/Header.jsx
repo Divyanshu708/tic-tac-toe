@@ -1,12 +1,23 @@
+import { useEffect } from "react";
 import { FiAlignJustify } from "react-icons/fi";
 import { TbGoGame } from "react-icons/tb";
 import { useMediaQuery } from "react-responsive";
 
+//This will simply render the header in our project and it also contains 3line menu bar button to open/hide form in lower resolution
+
 function Header({ setOpen, open }) {
-  const isResChanged = useMediaQuery({ maxWidth: 1024 });
-  isResChanged ? "" : setOpen(!isResChanged);
+  const isResChanged = useMediaQuery({ maxWidth: 1024 }); // this hook basically gives ous boolean value when our hits a specific resolution
+
+  useEffect(
+    //here we add/remove form to side based on higher or lower resolution
+    function () {
+      isResChanged ? "" : setOpen(!isResChanged);
+    },
+    [isResChanged]
+  );
 
   function handleMenuBtn(open) {
+    // to handle the menu button on top on lower resolution
     setOpen(!open);
   }
 

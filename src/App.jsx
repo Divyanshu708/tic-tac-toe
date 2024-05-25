@@ -7,7 +7,8 @@ import toast, { Toaster } from "react-hot-toast";
 import Header from "./components/Header";
 import Score from "./components/Score";
 
-const App = () => {
+function App() {
+  //all the state used in the project:
   const [gridSize, setGridSize] = useState(3);
   const [winStreak, setWinStreak] = useState(3);
   const [grid, setGrid] = useState(
@@ -21,13 +22,15 @@ const App = () => {
   const [winCount, setWinCount] = useState({ X: 0, O: 0 });
   const [open, setOpen] = useState(true);
 
-  const handleSettingsChange = (size, streak) => {
+  //this fn will run when all the requirements meet in the form to run the game and will set the inputted size and streak and also will reset the data!
+  function handleSettingsChange(size, streak) {
     setGridSize(size);
     setWinStreak(streak);
     resetGame(size);
-  };
+  }
 
-  const resetGame = (size) => {
+  // to reset the game and the score:
+  function resetGame(size) {
     setGrid(
       Array(size)
         .fill()
@@ -37,9 +40,10 @@ const App = () => {
     setWinner(null);
     setDraw(false);
     setWinCount({ X: 0, O: 0 });
-  };
+  }
 
-  const resetToDefault = () => {
+  // to reset the board after a player wins:
+  function resetToDefault() {
     setGridSize(gridSize);
     setWinStreak(winStreak);
     setGrid(
@@ -50,9 +54,10 @@ const App = () => {
     setCurrentPlayer("X");
     setWinner(null);
     setDraw(false);
-  };
+  }
 
-  const handleCellClick = (rowIndex, colIndex) => {
+  function handleCellClick(rowIndex, colIndex) {
+    // this a logic after we click on a cells/boxes of X,O
     if (grid[rowIndex][colIndex] || winner || draw) return;
 
     const newGrid = grid.map((row, rIdx) =>
@@ -77,9 +82,10 @@ const App = () => {
     } else {
       setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
     }
-  };
+  }
 
-  const checkWinner = (grid, player, x, y) => {
+  function checkWinner(grid, player, x, y) {
+    // Winner Checking Logic
     const directions = [
       [
         [0, 1],
@@ -124,11 +130,12 @@ const App = () => {
     }
 
     return false;
-  };
+  }
 
-  const checkDraw = (grid) => {
+  // This function is to basically check the if there is any Draw
+  function checkDraw(grid) {
     return grid.every((row) => row.every((cell) => cell !== null));
-  };
+  }
 
   return (
     <>
@@ -193,6 +200,6 @@ const App = () => {
       />
     </>
   );
-};
+}
 
 export default App;

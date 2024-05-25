@@ -1,6 +1,6 @@
-// src/components/Cell.js
 import React from "react";
 
+// This Component is basically renders each box where we input X and O
 const Cell = ({ value, onClick, gridLen }) => {
   return (
     <button
@@ -20,11 +20,9 @@ const Cell = ({ value, onClick, gridLen }) => {
           ? "h-16 sm:h-16 md:h-16 lg:h-20 lg:border-4 text-2xl sm:text-3xl md:text-4xl"
           : gridLen === 9
           ? "h-12 sm:h-16 md:h-16 lg:h-16 lg:border-4  text-xl sm:text-3xl md:text-4xl"
-          : // text-xl md:text-2xl lg:text-4xl
-          gridLen === 10
+          : gridLen === 10
           ? "h-10 sm:h-14 xl:h-16 lg:border-4 text-xl sm:text-2xl  md:text-3xl"
-          : // text-xl md:text-2xl lg:text-4xl
-            ""
+          : ""
       }`}
     >
       {value}

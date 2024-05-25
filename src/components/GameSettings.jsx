@@ -1,18 +1,19 @@
-// src/components/GameSettings.js
 import React from "react";
 import { useMediaQuery } from "react-responsive";
 
-const GameSettings = ({
+//this component will give a form to customize the game
+function GameSettings({
   onSettingsChange,
   winStreak,
   setWinStreak,
   gridSize,
   setGridSize,
   setOpen,
-}) => {
+}) {
   const isMobile = useMediaQuery({ maxWidth: 1024 });
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
+    // To handle the Submit botton on the form to customize the game
     e.preventDefault();
     if (
       gridSize >= 3 &&
@@ -24,9 +25,10 @@ const GameSettings = ({
     } else {
       alert("Please enter valid grid size and win streak values.");
     }
-  };
+  }
 
   function handleClose() {
+    // To handle the close botton on the form
     setOpen(false);
   }
 
@@ -79,6 +81,6 @@ const GameSettings = ({
       </div>
     </form>
   );
-};
+}
 
 export default GameSettings;

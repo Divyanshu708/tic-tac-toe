@@ -1,7 +1,7 @@
-// src/components/Board.js
 import React from "react";
 import Cell from "./Cell";
 
+//this is a component where all of our 'X' and 'O' cells/boxes will get render based on the data we provided in the form, this is simply our board where we play the game!
 const Board = ({ grid, onCellClick }) => {
   let gridLen = grid.length;
 
