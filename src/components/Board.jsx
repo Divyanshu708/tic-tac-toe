@@ -6,17 +6,23 @@ const Board = ({ grid, onCellClick }) => {
   let gridLen = grid.length;
 
   return (
-    <div className="flex justify-center ">
+    <div className="flex justify-center board">
       <div
-        className={`grid gap-2 grow md:flex-none sm:w-[100%] md:w-[100%] lg:w-[50%] m-4 ${
-          gridLen === 7
-            ? "lg:w-[55%] "
+        className={`grid gap-2 grow md:flex-none sm:w-[100%] md:w-[100%] lg:w-[50%] m-4 mt-6 ${
+          gridLen <= 4
+            ? "lg:scale-[90%] w-[90%] sm:w-[80%] md:w-[80%] lg:w-[80%] xl 2xl:w-[50%] -mb-10"
+            : gridLen === 5
+            ? "lg:scale-[90%] w-[95%] sm:w-[90%] md:w-[90%] lg:w-[90%] xl 2xl:w-[60%] -mb-10"
+            : gridLen === 6
+            ? "lg:scale-[90%] w-[90%] sm:w-[90%] md:w-[75%] lg:w-[90%] 2xl:w-[50%] -mb-10"
+            : gridLen === 7
+            ? "w-[90%] sm:w-[90%] md:w-[80%] lg:w-[80%] 2xl:w-[50%] mt-5 lg:mt-10"
             : gridLen === 8
-            ? "lg:scale-[80%] "
+            ? "lg:scale-[75%] w-[90%] sm:w-[80%] md:w-[80%] lg:w-[80%] xl 2xl:w-[60%] lg:-mt-10"
             : gridLen === 9
-            ? "lg:scale-[80%] "
+            ? " lg:scale-[90%] w-[90%] sm:w-[80%] md:w-[80%] lg:w-[80%] xl 2xl:w-[60%]"
             : gridLen === 10
-            ? "lg:scale-[75%]"
+            ? "lg:scale-[90%] w-[90%] sm:w-[80%] md:w-[80%] lg:w-[80%] xl:w-[75%] 2xl:w-[55%] -mb-10"
             : ""
         }`}
         style={{
@@ -28,28 +34,6 @@ const Board = ({ grid, onCellClick }) => {
               ? "0.15rem"
               : ""
           }`,
-
-          width: `${
-            grid.length === 7
-              ? "55%"
-              : grid.length === 8
-              ? "60%"
-              : grid.length === 9
-              ? "70%"
-              : grid.length === 10
-              ? "85%"
-              : ""
-          }`,
-
-          //   marginTop: `${
-          //     grid.length === 8
-          //       ? "-3rem"
-          //       : grid.length === 9
-          //       ? "-6rem"
-          //       : grid.length === 10
-          //       ? "-9rem"
-          //       : ""
-          //   }`,
         }}
       >
         {grid.map((row, rowIndex) =>

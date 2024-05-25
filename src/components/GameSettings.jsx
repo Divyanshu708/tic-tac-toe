@@ -63,14 +63,14 @@ const GameSettings = ({
       <div className="flex gap-4">
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline btn"
         >
           Save Setting
         </button>
         {isMobile && (
           <button
             type="submit"
-            className="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"
+            className="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline btn"
             onClick={handleClose}
           >
             Close

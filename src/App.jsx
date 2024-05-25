@@ -5,6 +5,7 @@ import Board from "./components/Board";
 import "./index.css";
 import toast, { Toaster } from "react-hot-toast";
 import Header from "./components/Header";
+import Score from "./components/Score";
 
 const App = () => {
   const [gridSize, setGridSize] = useState(3);
@@ -135,8 +136,7 @@ const App = () => {
 
       <div className="flex ticTab ">
         <div
-          className={` ml-4 absolute lg:relative sm:w-[60%] md:w-[50%] lg:w-1/3 z-20 lg:${() =>
-            console.log("hello")}`}
+          className={` ml-4 absolute lg:relative sm:w-[60%] md:w-[50%] lg:w-1/3 z-20`}
         >
           {open && (
             <GameSettings
@@ -150,17 +150,17 @@ const App = () => {
           )}
         </div>
 
-        <div className="grow z-10 bg-gray-200/50 rounded-lg sm:px-10 md:px-0  mx-5 flex justify-between flex-col">
+        <div className="grow z-10 shadow-lg bg-gray-200/50 rounded-lg sm:px-10 md:px-0 mx-5 flex justify-between flex-col">
           <div>
             <Board grid={grid} onCellClick={handleCellClick} />
           </div>
 
-          <div className="mb-10">
+          <div className="mb-10 -my-10">
             <Score X={winCount.X} O={winCount.O} />
 
             <button
               onClick={() => resetGame(gridSize)}
-              className=" bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-3 text-sm  md:text-lg lg:text-xl rounded focus:outline-none focus:shadow-outline md:ml-16 ml-5 lg:ml-16 xl:ml-32 mt-5"
+              className=" bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-3 text-sm  md:text-lg lg:text-xl rounded focus:outline-none focus:shadow-outline md:ml-16 ml-5 lg:ml-16 xl:ml-32 mt-5 btn"
             >
               Reset score
             </button>
@@ -168,10 +168,12 @@ const App = () => {
         </div>
       </div>
       <Toaster
-        position="bottom right"
+        className="fontUp"
+        position="top-center"
         gutter={12}
         containerStyle={{ margin: "8px" }}
         toastOptions={{
+          className: "fontUp",
           success: {
             duration: 2500,
           },
@@ -183,7 +185,9 @@ const App = () => {
             maxWidth: "500px",
             padding: "20px 28px",
             backgroundColor: "white",
-            color: "black",
+            color: "rgba(89, 94, 105, 0.829)",
+            marginTop: "1.2rem",
+            backgroundColor: "rgb(243 244 246 / 1)",
           },
         }}
       />
@@ -192,12 +196,3 @@ const App = () => {
 };
 
 export default App;
-
-function Score({ X, O }) {
-  return (
-    <div className="mt-16 sm:mt-16 text-center text-sm sm:text-lg md:text-xl lg:text-2xl flex justify-between px-6 md:px-16 lg:px-16 xl:px-32">
-      <p>Player X Wins: {X}</p>
-      <p>Player O Wins: {O}</p>
-    </div>
-  );
-}
